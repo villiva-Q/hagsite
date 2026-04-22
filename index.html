@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexa Arena｜设定分享页</title>
+  <meta name="description" content="Hexa Arena 设定分享页：世界观、竞技场逻辑、职业路线与战斗循环。" />
+  <style>
+    :root {
+      --bg: #f7f2e8;
+      --paper: #fbf8f1;
+      --ink: #171717;
+      --muted: rgba(23, 23, 23, 0.66);
+      --line: rgba(23, 23, 23, 0.12);
+      --accent: #b8793e;
+      --link: #1a4d82;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #fffaf1 0%, #f3eadb 44%, #eadfce 100%);
+    }
+
+    a { color: var(--link); }
+
+    .wrap {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      padding: 28px 14px 64px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .hero-card,
+    .toc,
+    .page-note,
+    .publish-note {
+      background: rgba(251, 248, 241, 0.88);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-card {
+      padding: 18px 18px 16px;
+      position: sticky;
+      top: 14px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      margin: 14px 0 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .hero-meta {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .toc {
+      padding: 18px 18px 14px;
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.54);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .section {
+      margin-top: 26px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-head h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .section-head span {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .page-frame {
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .page-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .page-note {
+      margin-top: 10px;
+      padding: 14px 16px;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .page-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .page-note p {
+      margin: 0 0 8px;
+    }
+
+    .page-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .publish-note {
+      margin-top: 36px;
+      padding: 16px 18px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .publish-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    code {
+      padding: 1px 5px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        position: static;
+      }
+
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <article class="hero-card">
+        <p class="eyebrow">Hexa Arena Setting</p>
+        <h1>HEXA<br>ARENA</h1>
+        <p>一个建立在六边形战区上的未来竞技场世界。搜索、交战、撤离，与长期构筑一起，组成这套公开试炼的完整循环。</p>
+        <div class="hero-meta">
+          面向分享的静态页面版本<br />
+          适合直接发布到 GitHub Pages
+        </div>
+      </article>
+
+      <nav class="toc">
+        <h2>Contents</h2>
+        <div class="toc-grid">
+          <a href="#cover">封面与世界前提</a>
+          <a href="#page-1">世界为什么需要竞技场</a>
+          <a href="#page-2">比赛如何开始</a>
+          <a href="#page-3">搜索与同格碰撞</a>
+          <a href="#page-4">撤离与长期构筑</a>
+        </div>
+      </nav>
+    </section>
+
+    <section class="section" id="cover">
+      <div class="section-head">
+        <h3>Cover</h3>
+        <span>Premise</span>
+      </div>
+      <div class="page-frame">
+        <img src="./assets/cover.png" alt="Hexa Arena cover" />
+      </div>
+      <div class="page-note">
+        <strong>Setting Premise</strong>
+        <p>《Hexa Arena》发生在一个由 AI 主导生产、分配与治理的未来社会。基础生存压力已经被大幅削弱，但人类的冒险欲、攻击性、观看欲与自我证明需求并没有消失。于是，竞技场成为一种被制度化、娱乐化、商品化的公开试炼。</p>
+      </div>
+    </section>
+
+    <section class="section" id="page-1">
+      <div class="section-head">
+        <h3>Page 01</h3>
+        <span>World</span>
+      </div>
+      <div class="page-frame">
+        <img src="./assets/page-01.png" alt="Hexa Arena page 01" />
+      </div>
+      <div class="page-note">
+        <strong>World</strong>
+        <p>Hexa Arena 的世界不是崩坏废土，而是一个过于稳定、过于安全、过于高效的未来社会。AI 负责大部分生产、分配与秩序维护，人类寿命被延长，物质极大丰富，日常生活被优化到近乎没有生存焦虑。</p>
+        <p>正因为如此，竞技场才获得了新的社会意义。它不是落后的野蛮遗迹，而是这个时代用来疏导风险冲动、表演欲与竞争欲的正式机制。参赛者既是战斗者，也是被观看、被评级、被消费的竞技表演者。</p>
+      </div>
+    </section>
+
+    <section class="section" id="page-2">
+      <div class="section-head">
+        <h3>Page 02</h3>
+        <span>Match Start</span>
+      </div>
+      <div class="page-frame">
+        <img src="./assets/page-02.png" alt="Hexa Arena page 02" />
+      </div>
+      <div class="page-note">
+        <strong>Match Start</strong>
+        <p>每一局比赛都从战区投送开始。战场建立在六边形棋盘之上，参赛者被投入同一片公开空间，没有固定阵营，只能依靠自己的职业路线、装备构筑和局内判断生存下去。</p>
+        <p>首发三种职业分别验证三条不同逻辑：战士依靠高刚性、推进与压制建立正面优势；刺客依靠速度、切入与时机制造致命碰撞；电气工程师则用金属结构感的轻型护甲、护盾与能量循环维持技术性压制。</p>
+      </div>
+    </section>
+
+    <section class="section" id="page-3">
+      <div class="section-head">
+        <h3>Page 03</h3>
+        <span>Search And Clash</span>
+      </div>
+      <div class="page-frame">
+        <img src="./assets/page-03.png" alt="Hexa Arena page 03" />
+      </div>
+      <div class="page-note">
+        <strong>Search And Clash</strong>
+        <p>Hexa Arena 的核心并不是单纯的对打，而是“搜索、判断、碰撞、撤离”的连续过程。参赛者需要在有限信息中移动、搜索资源、评估风险，并决定自己是否继续深入战区。</p>
+        <p>当两名或更多参赛者进入同一格，距离会被瞬间压缩，局势从试探转为直接冲突。攻击、逃跑、压制与反制都在同一空间内发生，这使得每次接触都具有极高的戏剧张力和结算重量。</p>
+      </div>
+    </section>
+
+    <section class="section" id="page-4">
+      <div class="section-head">
+        <h3>Page 04</h3>
+        <span>Extraction And Build</span>
+      </div>
+      <div class="page-frame">
+        <img src="./assets/page-04.png" alt="Hexa Arena page 04" />
+      </div>
+      <div class="page-note">
+        <strong>Extraction And Build</strong>
+        <p>在这套设定里，胜利不只等于击败别人。真正重要的是能否把战利品与收益活着带出竞技场。撤离不是失败的替代动作，而是被规则明确承认的一种结果与价值判断。</p>
+        <p>赛后，角色会重新回到构筑循环。核心躯体决定底层身份与属性倾向，装备决定常驻战力，芯片决定战术路线，药物决定短时爆发，道具决定局势操作。于是每一局既是生死试炼，也是下一次更高等级竞技的准备阶段。</p>
+      </div>
+    </section>
+
+    <section class="publish-note">
+      <strong>Publishing</strong>
+      这个目录已经适合直接作为 GitHub Pages 静态站点发布。把仓库推到 GitHub 后，只要启用 Pages，并将发布源指向 GitHub Actions，就可以把 <code>/site</code> 目录部署成可公开访问的页面。
+    </section>
+  </main>
+</body>
+</html>
