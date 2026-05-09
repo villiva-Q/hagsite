@@ -1,6 +1,6 @@
-# Hexa Arena Setting Site
+# HAL Setting Site
 
-Static site bundle for sharing the `Hexa Arena` setting page as a standalone public repository.
+Static site bundle for sharing the `HAL` setting page as a standalone public repository.
 
 ## What this contains
 
@@ -11,7 +11,7 @@ Static site bundle for sharing the `Hexa Arena` setting page as a standalone pub
 ## Recommended publish flow
 
 1. Create a new **public** GitHub repository
-   Example: `hexa-arena-setting-site`
+   Example: `hal-setting-site`
 2. Copy all files from this directory into that repository
 3. Push to the repository's `main` branch
 4. In GitHub:
