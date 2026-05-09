@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAL｜Hex Arena League</title>
-  <meta name="description" content="HAL（Hex Arena League）项目展示页。Loot. Fight. Extract. Or Take It All." />
+  <meta name="description" content="HAL（Hex Arena League）Loot. Fight. Extract. Or Take It All. 是一款开发中的回合制撤离战术游戏。" />
   <style>
     :root {
       --bg: #f7f2e8;
@@ -36,6 +36,41 @@
       width: min(100%, 1120px);
       margin: 0 auto;
       padding: 28px 14px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      background: rgba(251, 248, 241, 0.88);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(3px);
+    }
+
+    .lang-switch button {
+      border: 0;
+      padding: 8px 12px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .lang-switch button.active {
+      background: var(--ink);
+      color: var(--paper);
     }
 
     .hero {
@@ -82,7 +117,7 @@
     .hero-card p {
       margin: 14px 0 0;
       font-size: 14px;
-      line-height: 1.65;
+      line-height: 1.75;
     }
 
     .hero-meta {
@@ -200,14 +235,6 @@
       color: var(--muted);
     }
 
-    code {
-      padding: 1px 5px;
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 4px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.92em;
-    }
-
     @media (max-width: 860px) {
       .hero {
         grid-template-columns: 1fr;
@@ -220,113 +247,274 @@
       .toc-grid {
         grid-template-columns: 1fr;
       }
+
+      .topbar {
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
 <body>
   <main class="wrap">
+    <div class="topbar">
+      <div class="lang-switch" aria-label="Language switcher">
+        <button id="lang-zh" class="active" type="button">中文</button>
+        <button id="lang-en" type="button">EN</button>
+      </div>
+    </div>
+
     <section class="hero">
       <article class="hero-card">
-        <p class="eyebrow">Hex Arena League</p>
+        <p class="eyebrow" id="hero-eyebrow">Hex Arena League</p>
         <h1>HAL</h1>
-        <p>HAL（Hex Arena League）是一款开发中的回合制撤离战术游戏。Loot. Fight. Extract. Or Take It All.</p>
-        <div class="hero-meta">
+        <p id="hero-summary">HAL（Hex Arena League）Loot. Fight. Extract. Or Take It All. 是一款开发中的回合制撤离战术游戏。</p>
+        <div class="hero-meta" id="hero-meta">
           面向分享的静态页面版本<br />
           适合直接发布到 GitHub Pages
         </div>
       </article>
 
       <nav class="toc">
-        <h2>Contents</h2>
+        <h2 id="toc-title">Contents</h2>
         <div class="toc-grid">
-          <a href="#cover">封面与世界前提</a>
-          <a href="#page-1">世界为什么需要竞技场</a>
-          <a href="#page-2">比赛如何开始</a>
-          <a href="#page-3">搜索与同格碰撞</a>
-          <a href="#page-4">撤离与长期构筑</a>
+          <a href="#cover" id="toc-cover">封面与世界前提</a>
+          <a href="#page-1" id="toc-page-1">世界为什么需要竞技场</a>
+          <a href="#page-2" id="toc-page-2">比赛如何开始</a>
+          <a href="#page-3" id="toc-page-3">搜索与同格碰撞</a>
+          <a href="#page-4" id="toc-page-4">撤离与长期构筑</a>
         </div>
       </nav>
     </section>
 
     <section class="section" id="cover">
       <div class="section-head">
-        <h3>Cover</h3>
-        <span>Premise</span>
+        <h3 id="cover-title">Cover</h3>
+        <span id="cover-kicker">Premise</span>
       </div>
       <div class="page-frame">
         <img src="./assets/cover.png" alt="HAL cover" />
       </div>
       <div class="page-note">
-        <strong>Setting Premise</strong>
-        <p>《HAL》发生在一个由 AI 主导生产、分配与治理的未来社会。基础生存压力已经被大幅削弱，但人类的冒险欲、攻击性、观看欲与自我证明需求并没有消失。于是，竞技场成为一种被制度化、娱乐化、商品化的公开试炼。</p>
+        <strong id="cover-note-title">Setting Premise</strong>
+        <p id="cover-p1">《HAL》发生在一个由 AI 主导生产、分配与治理的未来社会。基础生存压力已经被大幅削弱，但人类的冒险欲、攻击性、观看欲与自我证明需求并没有消失。于是，竞技场成为一种被制度化、娱乐化、商品化的公开试炼。</p>
       </div>
     </section>
 
     <section class="section" id="page-1">
       <div class="section-head">
-        <h3>Page 01</h3>
-        <span>World</span>
+        <h3 id="page1-title">Page 01</h3>
+        <span id="page1-kicker">World</span>
       </div>
       <div class="page-frame">
         <img src="./assets/page-01.png" alt="HAL page 01" />
       </div>
       <div class="page-note">
-        <strong>World</strong>
-        <p>HAL 的世界不是崩坏废土，而是一个过于稳定、过于安全、过于高效的未来社会。AI 负责大部分生产、分配与秩序维护，人类寿命被延长，物质极大丰富，日常生活被优化到近乎没有生存焦虑。</p>
-        <p>正因为如此，竞技场才获得了新的社会意义。它不是落后的野蛮遗迹，而是这个时代用来疏导风险冲动、表演欲与竞争欲的正式机制。参赛者既是战斗者，也是被观看、被评级、被消费的竞技表演者。</p>
+        <strong id="page1-note-title">World</strong>
+        <p id="page1-p1">HAL 的世界不是崩坏废土，而是一个过于稳定、过于安全、过于高效的未来社会。AI 负责大部分生产、分配与秩序维护，人类寿命被延长，物质极大丰富，日常生活被优化到近乎没有生存焦虑。</p>
+        <p id="page1-p2">正因为如此，竞技场才获得了新的社会意义。它不是落后的野蛮遗迹，而是这个时代用来疏导风险冲动、表演欲与竞争欲的正式机制。参赛者既是战斗者，也是被观看、被评级、被消费的竞技表演者。</p>
       </div>
     </section>
 
     <section class="section" id="page-2">
       <div class="section-head">
-        <h3>Page 02</h3>
-        <span>Match Start</span>
+        <h3 id="page2-title">Page 02</h3>
+        <span id="page2-kicker">Match Start</span>
       </div>
       <div class="page-frame">
         <img src="./assets/page-02.png" alt="HAL page 02" />
       </div>
       <div class="page-note">
-        <strong>Match Start</strong>
-        <p>每一局比赛都从战区投送开始。战场建立在六边形棋盘之上，参赛者被投入同一片公开空间，没有固定阵营，只能依靠自己的职业路线、装备构筑和局内判断生存下去。</p>
-        <p>首发三种职业分别验证三条不同逻辑：战士依靠高刚性、推进与压制建立正面优势；刺客依靠速度、切入与时机制造致命碰撞；电气工程师则用金属结构感的轻型护甲、护盾与能量循环维持技术性压制。</p>
+        <strong id="page2-note-title">Match Start</strong>
+        <p id="page2-p1">每一局比赛都从战区投送开始。战场建立在六边形棋盘之上，参赛者被投入同一片公开空间，没有固定阵营，只能依靠自己的职业路线、装备构筑和局内判断生存下去。</p>
+        <p id="page2-p2">首发三种职业分别验证三条不同逻辑：战士依靠高刚性、推进与压制建立正面优势；刺客依靠速度、切入与时机制造致命碰撞；电气工程师则用金属结构感的轻型护甲、护盾与能量循环维持技术性压制。</p>
       </div>
     </section>
 
     <section class="section" id="page-3">
       <div class="section-head">
-        <h3>Page 03</h3>
-        <span>Search And Clash</span>
+        <h3 id="page3-title">Page 03</h3>
+        <span id="page3-kicker">Search And Clash</span>
       </div>
       <div class="page-frame">
         <img src="./assets/page-03.png" alt="HAL page 03" />
       </div>
       <div class="page-note">
-        <strong>Search And Clash</strong>
-        <p>HAL 的核心并不是单纯的对打，而是“搜索、判断、碰撞、撤离”的连续过程。参赛者需要在有限信息中移动、搜索资源、评估风险，并决定自己是否继续深入战区。</p>
-        <p>当两名或更多参赛者进入同一格，距离会被瞬间压缩，局势从试探转为直接冲突。攻击、逃跑、压制与反制都在同一空间内发生，这使得每次接触都具有极高的戏剧张力和结算重量。</p>
+        <strong id="page3-note-title">Search And Clash</strong>
+        <p id="page3-p1">HAL 的核心并不是单纯的对打，而是“搜索、判断、碰撞、撤离”的连续过程。参赛者需要在有限信息中移动、搜索资源、评估风险，并决定自己是否继续深入战区。</p>
+        <p id="page3-p2">当两名或更多参赛者进入同一格，距离会被瞬间压缩，局势从试探转为直接冲突。攻击、逃跑、压制与反制都在同一空间内发生，这使得每次接触都具有极高的戏剧张力和结算重量。</p>
       </div>
     </section>
 
     <section class="section" id="page-4">
       <div class="section-head">
-        <h3>Page 04</h3>
-        <span>Extraction And Build</span>
+        <h3 id="page4-title">Page 04</h3>
+        <span id="page4-kicker">Extraction And Build</span>
       </div>
       <div class="page-frame">
         <img src="./assets/page-04.png" alt="HAL page 04" />
       </div>
       <div class="page-note">
-        <strong>Extraction And Build</strong>
-        <p>在这套设定里，胜利不只等于击败别人。真正重要的是能否把战利品与收益活着带出竞技场。撤离不是失败的替代动作，而是被规则明确承认的一种结果与价值判断。</p>
-        <p>赛后，角色会重新回到构筑循环。核心躯体决定底层身份与属性倾向，装备决定常驻战力，芯片决定战术路线，药物决定短时爆发，道具决定局势操作。于是每一局既是生死试炼，也是下一次更高等级竞技的准备阶段。</p>
+        <strong id="page4-note-title">Extraction And Build</strong>
+        <p id="page4-p1">在这套设定里，胜利不只等于击败别人。真正重要的是能否把战利品与收益活着带出竞技场。撤离不是失败的替代动作，而是被规则明确承认的一种结果与价值判断。</p>
+        <p id="page4-p2">赛后，角色会重新回到构筑循环。核心躯体决定底层身份与属性倾向，装备决定常驻战力，芯片决定战术路线，药物决定短时爆发，道具决定局势操作。于是每一局既是生死试炼，也是下一次更高等级竞技的准备阶段。</p>
       </div>
     </section>
 
     <section class="publish-note">
-      <strong>Publishing</strong>
-      正在开发，敬请期待，就酱。<br />
-      Mr.Q
+      <strong id="closing-title">Publishing</strong>
+      <span id="closing-body">正在开发，敬请期待，就酱。<br />Mr.Q</span>
     </section>
   </main>
+
+  <script>
+    const translations = {
+      zh: {
+        lang: 'zh-CN',
+        title: 'HAL｜Hex Arena League',
+        description: 'HAL（Hex Arena League）Loot. Fight. Extract. Or Take It All. 是一款开发中的回合制撤离战术游戏。',
+        heroEyebrow: 'Hex Arena League',
+        heroSummary: 'HAL（Hex Arena League）Loot. Fight. Extract. Or Take It All. 是一款开发中的回合制撤离战术游戏。',
+        heroMeta: '面向分享的静态页面版本<br />适合直接发布到 GitHub Pages',
+        tocTitle: 'Contents',
+        tocCover: '封面与世界前提',
+        tocPage1: '世界为什么需要竞技场',
+        tocPage2: '比赛如何开始',
+        tocPage3: '搜索与同格碰撞',
+        tocPage4: '撤离与长期构筑',
+        coverTitle: 'Cover',
+        coverKicker: 'Premise',
+        coverNoteTitle: 'Setting Premise',
+        coverP1: '《HAL》发生在一个由 AI 主导生产、分配与治理的未来社会。基础生存压力已经被大幅削弱，但人类的冒险欲、攻击性、观看欲与自我证明需求并没有消失。于是，竞技场成为一种被制度化、娱乐化、商品化的公开试炼。',
+        page1Title: 'Page 01',
+        page1Kicker: 'World',
+        page1NoteTitle: 'World',
+        page1P1: 'HAL 的世界不是崩坏废土，而是一个过于稳定、过于安全、过于高效的未来社会。AI 负责大部分生产、分配与秩序维护，人类寿命被延长，物质极大丰富，日常生活被优化到近乎没有生存焦虑。',
+        page1P2: '正因为如此，竞技场才获得了新的社会意义。它不是落后的野蛮遗迹，而是这个时代用来疏导风险冲动、表演欲与竞争欲的正式机制。参赛者既是战斗者，也是被观看、被评级、被消费的竞技表演者。',
+        page2Title: 'Page 02',
+        page2Kicker: 'Match Start',
+        page2NoteTitle: 'Match Start',
+        page2P1: '每一局比赛都从战区投送开始。战场建立在六边形棋盘之上，参赛者被投入同一片公开空间，没有固定阵营，只能依靠自己的职业路线、装备构筑和局内判断生存下去。',
+        page2P2: '首发三种职业分别验证三条不同逻辑：战士依靠高刚性、推进与压制建立正面优势；刺客依靠速度、切入与时机制造致命碰撞；电气工程师则用金属结构感的轻型护甲、护盾与能量循环维持技术性压制。',
+        page3Title: 'Page 03',
+        page3Kicker: 'Search And Clash',
+        page3NoteTitle: 'Search And Clash',
+        page3P1: 'HAL 的核心并不是单纯的对打，而是“搜索、判断、碰撞、撤离”的连续过程。参赛者需要在有限信息中移动、搜索资源、评估风险，并决定自己是否继续深入战区。',
+        page3P2: '当两名或更多参赛者进入同一格，距离会被瞬间压缩，局势从试探转为直接冲突。攻击、逃跑、压制与反制都在同一空间内发生，这使得每次接触都具有极高的戏剧张力和结算重量。',
+        page4Title: 'Page 04',
+        page4Kicker: 'Extraction And Build',
+        page4NoteTitle: 'Extraction And Build',
+        page4P1: '在这套设定里，胜利不只等于击败别人。真正重要的是能否把战利品与收益活着带出竞技场。撤离不是失败的替代动作，而是被规则明确承认的一种结果与价值判断。',
+        page4P2: '赛后，角色会重新回到构筑循环。核心躯体决定底层身份与属性倾向，装备决定常驻战力，芯片决定战术路线，药物决定短时爆发，道具决定局势操作。于是每一局既是生死试炼，也是下一次更高等级竞技的准备阶段。',
+        closingTitle: 'Publishing',
+        closingBody: '正在开发，敬请期待，就酱。<br />Mr.Q'
+      },
+      en: {
+        lang: 'en',
+        title: 'HAL | Hex Arena League',
+        description: 'HAL (Hex Arena League) Loot. Fight. Extract. Or Take It All. is a turn-based extraction tactics game in development.',
+        heroEyebrow: 'Hex Arena League',
+        heroSummary: 'HAL (Hex Arena League) Loot. Fight. Extract. Or Take It All. is a turn-based extraction tactics game in development.',
+        heroMeta: 'Static share-page edition<br />Ready to publish directly to GitHub Pages',
+        tocTitle: 'Contents',
+        tocCover: 'Cover and Core Premise',
+        tocPage1: 'Why This World Needs Arenas',
+        tocPage2: 'How A Match Begins',
+        tocPage3: 'Search and Same-Tile Clashes',
+        tocPage4: 'Extraction and Long-Term Builds',
+        coverTitle: 'Cover',
+        coverKicker: 'Premise',
+        coverNoteTitle: 'Setting Premise',
+        coverP1: 'HAL unfolds in a future society where AI has taken over production, distribution, and governance. Survival pressure has been greatly reduced, but human appetite for risk, aggression, spectatorship, and self-proof has not disappeared. The arena becomes a public trial that is institutionalized, entertaining, and commodified.',
+        page1Title: 'Page 01',
+        page1Kicker: 'World',
+        page1NoteTitle: 'World',
+        page1P1: 'HAL is not set in a collapsed wasteland. It is an overly stable, overly safe, and overly efficient future society. AI handles most production, distribution, and order maintenance; human lifespans are extended, material abundance is high, and daily life has been optimized to the point of near-zero survival anxiety.',
+        page1P2: 'That is exactly why the arena gains new social meaning. It is not a leftover of primitive violence, but a formal mechanism for channeling risk impulse, exhibitionism, and competitive desire. Contestants are fighters, but they are also performers who are watched, rated, and consumed.',
+        page2Title: 'Page 02',
+        page2Kicker: 'Match Start',
+        page2NoteTitle: 'Match Start',
+        page2P1: 'Every match begins with deployment into the combat zone. The battlefield is built on a hex grid. Contestants are thrown into the same open space with no fixed factions, forced to survive through class identity, equipment build, and moment-to-moment judgment.',
+        page2P2: 'The first three classes validate three different combat logics: the Warrior wins through rigidity, forward pressure, and suppression; the Assassin wins through speed, timing, and lethal entry; the Electrical Engineer sustains technical control through light armor with metallic structure, shields, and energy cycling.',
+        page3Title: 'Page 03',
+        page3Kicker: 'Search and Clash',
+        page3NoteTitle: 'Search and Clash',
+        page3P1: 'HAL is not simply about trading blows. Its core loop is a continuous sequence of searching, judging, colliding, and extracting. Contestants move through limited information, search for resources, assess risk, and decide whether to keep pushing deeper into the zone.',
+        page3P2: 'When two or more contestants enter the same tile, distance collapses instantly and the situation turns from probing into direct conflict. Attack, escape, suppression, and counterplay all happen inside the same compressed space, giving each encounter strong dramatic and mechanical weight.',
+        page4Title: 'Page 04',
+        page4Kicker: 'Extraction and Build',
+        page4NoteTitle: 'Extraction and Build',
+        page4P1: 'In this setting, victory is not only about defeating someone else. What truly matters is whether you can leave the arena alive with your loot and gains. Extraction is not a consolation action. It is an explicitly recognized outcome and value judgment within the rules.',
+        page4P2: 'After the match, the character returns to the build loop. Core body archetypes define identity and attribute leanings, equipment defines persistent combat strength, chips define tactical routes, drugs define short bursts, and items define situational control. Each match is both a survival trial and preparation for the next higher-tier contest.',
+        closingTitle: 'Publishing',
+        closingBody: 'In development. Stay tuned, okay?<br />Mr.Q'
+      }
+    };
+
+    const ids = {
+      heroEyebrow: 'hero-eyebrow',
+      heroSummary: 'hero-summary',
+      heroMeta: 'hero-meta',
+      tocTitle: 'toc-title',
+      tocCover: 'toc-cover',
+      tocPage1: 'toc-page-1',
+      tocPage2: 'toc-page-2',
+      tocPage3: 'toc-page-3',
+      tocPage4: 'toc-page-4',
+      coverTitle: 'cover-title',
+      coverKicker: 'cover-kicker',
+      coverNoteTitle: 'cover-note-title',
+      coverP1: 'cover-p1',
+      page1Title: 'page1-title',
+      page1Kicker: 'page1-kicker',
+      page1NoteTitle: 'page1-note-title',
+      page1P1: 'page1-p1',
+      page1P2: 'page1-p2',
+      page2Title: 'page2-title',
+      page2Kicker: 'page2-kicker',
+      page2NoteTitle: 'page2-note-title',
+      page2P1: 'page2-p1',
+      page2P2: 'page2-p2',
+      page3Title: 'page3-title',
+      page3Kicker: 'page3-kicker',
+      page3NoteTitle: 'page3-note-title',
+      page3P1: 'page3-p1',
+      page3P2: 'page3-p2',
+      page4Title: 'page4-title',
+      page4Kicker: 'page4-kicker',
+      page4NoteTitle: 'page4-note-title',
+      page4P1: 'page4-p1',
+      page4P2: 'page4-p2',
+      closingTitle: 'closing-title',
+      closingBody: 'closing-body'
+    };
+
+    function setLanguage(lang) {
+      const copy = translations[lang];
+      document.documentElement.lang = copy.lang;
+      document.title = copy.title;
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute('content', copy.description);
+
+      Object.entries(ids).forEach(([key, id]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (key === 'heroMeta' || key === 'closingBody') {
+          el.innerHTML = copy[key];
+        } else {
+          el.textContent = copy[key];
+        }
+      });
+
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('hal-site-lang', lang);
+    }
+
+    document.getElementById('lang-zh').addEventListener('click', () => setLanguage('zh'));
+    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+
+    const saved = localStorage.getItem('hal-site-lang');
+    setLanguage(saved === 'en' ? 'en' : 'zh');
+  </script>
 </body>
 </html>
